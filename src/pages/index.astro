@@ -1,11 +1,121 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
+import Layout from "../layouts/Layout.astro";
+import Compass from "../assets/svg/widget-compass.svg";
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
+<style>
+  .lead-capture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .intro-content {
+    width: 50%;
+  }
+  .intro-img {
+    width: 50%;
+    position: relative;
+  }
+  .compass {
+    width: 100%;
+    height: auto;
+  }
+
+  g#border path {
+    display: none;
+    animation: 4s infinite outer-border;
+  }
+  @keyframes outer-border {
+    0% {
+      transform: scale(0);
+    }
+
+    100% {
+      transform: scale(2);
+    }
+  }
+</style>
+
 <Layout>
-	<Welcome />
+  <section
+    class="lead-capture"
+    aria-label="Sign up for full blog access and newsletter"
+  >
+    <div class="intro-content">
+      <h2>Your Founder's Capital Compass</h2>
+      <p>
+        Join thousands of founders, startups, and creators navigating the
+        capital-raising journey — from seed rounds to Series A, crowdfunding to
+        community investments. Get exclusive articles, tips, and tools delivered
+        straight to your inbox.
+      </p>
+      <form action="#" method="POST" novalidate>
+        <label for="email" class="sr-only">Email address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+          aria-required="true"
+          aria-describedby="email-desc"
+        />
+        <button type="submit">Get Access</button>
+      </form>
+      <p
+        id="email-desc"
+        style="margin-top: 0.75rem; font-size: 0.875rem; color: #ccc;"
+      >
+        No spam. Unsubscribe anytime.
+      </p>
+    </div>
+
+    <div class="intro-img">
+      <Compass class="compass" />
+    </div>
+  </section>
+
+  <section class="content-pillars" aria-label="Blog content pillars">
+    <h3>Explore Our Content Pillars</h3>
+    <ul class="pillars-list">
+      <li>
+        <strong>Funding 101</strong> Articles for beginners—understanding SAFE notes,
+        term sheets, and valuation caps.
+      </li>
+      <li>
+        <strong>Investor Deep Dives</strong> Profiles of angel investors, VCs, and
+        funding platforms.
+      </li>
+      <li>
+        <strong>Founder Stories</strong> Interviews and case studies of successful
+        fundraising campaigns.
+      </li>
+      <li>
+        <strong>Crowdfunding Corner</strong> Trends, tools, and platforms like Wefunder,
+        Republic, SeedInvest.
+      </li>
+      <li>
+        <strong>Pitch Toolkit</strong> Templates, tips, and examples for decks, outreach,
+        and storytelling.
+      </li>
+    </ul>
+  </section>
+
+  <style>
+    /* Screen reader only utility */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+  </style>
 </Layout>

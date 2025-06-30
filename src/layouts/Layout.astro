@@ -1,22 +1,189 @@
+---
+import Header from "../components/header.astro";
+const { title, description } = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="Fuel the Climb. Fund the Dream." />
+    <title>{title ? title : "Home"} &#183; Raisehive</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;600&display=swap");
+
+      :root {
+        --color-midnight-navy: #0a0f2d;
+        --color-electric-indigo: #6366f1;
+        --color-mint-cream: #f0fff4;
+        --color-tangerine: #ff7a00;
+        --font-headline: "Space Grotesk", sans-serif;
+        --font-body: "Inter", sans-serif;
+      }
+
+      /* Reset */
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--color-mint-cream);
+        font-family: var(--font-body);
+        color: var(--color-midnight-navy);
+        line-height: 1.6;
+        font-size: 16px;
+      }
+
+      a {
+        color: var(--color-electric-indigo);
+        text-decoration: none;
+      }
+
+      a:hover,
+      a:focus {
+        text-decoration: underline;
+      }
+
+      main {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+
+      section.lead-capture {
+        background: var(--color-midnight-navy);
+        border-radius: 8px;
+        padding: 2rem;
+        color: var(--color-mint-cream);
+        text-align: center;
+      }
+
+      section.lead-capture h2 {
+        font-family: var(--font-headline);
+        font-weight: 700;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      section.lead-capture p {
+        font-size: 1.125rem;
+        margin-bottom: 1.5rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      form {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      input[type="email"] {
+        flex: 1 1 250px;
+        padding: 0.75rem 1rem;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        font-family: var(--font-body);
+        outline-offset: 2px;
+      }
+
+      input[type="email"]:focus {
+        outline: 3px solid var(--color-tangerine);
+      }
+
+      button[type="submit"] {
+        background: var(--color-tangerine);
+        border: none;
+        padding: 0.75rem 1.5rem;
+        font-weight: 700;
+        font-size: 1rem;
+        color: var(--color-mint-cream);
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: var(--font-body);
+        transition: background-color 0.3s ease;
+      }
+
+      button[type="submit"]:hover,
+      button[type="submit"]:focus {
+        background: #e66c00;
+        outline: none;
+      }
+
+      /* Content Pillars */
+      section.content-pillars {
+        margin-top: 3rem;
+      }
+
+      section.content-pillars h3 {
+        font-family: var(--font-headline);
+        font-weight: 700;
+        font-size: 1.75rem;
+        color: var(--color-midnight-navy);
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      ul.pillars-list {
+        list-style: none;
+        padding: 0;
+        max-width: 720px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+
+      ul.pillars-list li {
+        background: white;
+        border-radius: 6px;
+        box-shadow: 0 2px 6px rgba(10, 15, 45, 0.1);
+        padding: 1rem 1.25rem;
+        color: var(--color-midnight-navy);
+        font-weight: 600;
+      }
+
+      ul.pillars-list li strong {
+        color: var(--color-electric-indigo);
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        font-family: var(--font-headline);
+        font-size: 1.1rem;
+      }
+
+      footer {
+        text-align: center;
+        padding: 2rem 1rem;
+        font-size: 0.875rem;
+        color: var(--color-midnight-navy);
+        background: var(--color-mint-cream);
+        margin-top: 4rem;
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <footer>&copy; 2025 Caprise. All rights reserved.</footer>
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 </style>
